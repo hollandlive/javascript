@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+
+}
+
+
+.clock{
+	width: 140px;
+	height: 140px;
+}
+
+#clock-face {
+	stroke: blue;
+	stroke-width: 2px;
+	fill: white;
+}
+
+#hour, #min, #sec, #sec-tail {
+	stroke:black;
+	stroke-linecap:round;
+}
+
+#hour {
+	stroke-width:3px;
+}
+
+#min{
+	stroke-width:2px;
+}
+#sec{
+	stroke-width:1px;
+}
+
+.time-text {
+	text-align: center;
+}
+
+
+
+
+

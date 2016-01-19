@@ -1,0 +1,43 @@
+<!--Welcome to my Analogue Clock 1.0
+* Author Artem Aksenov
+* Version 1.0
+* In this clock I am using 
+* Date 19.01.2016 Amsterdam/Netherlands
+* Example http://arthem.info/analogclock
+*
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Clock Analogue</title>
+    <link rel="stylesheet" type="text/css" href="clockstyle.css">
+    <script type="text/javascript" src="analclockscript.js"></script>
+  </head>
+  <body>
+  	<div class="clock">
+  		<svg width="140" height="140">
+  			<circle id="clock-face" cx="70" cy="70" r="65"/>
+  			<line id="hour" x1="70" y1="70" x2="70" y2="38" />
+  			<line id="min" x1="70" y1="70" x2="70" y2="20" />
+  			<line id="sec" x1="70" y1="70" x2="70" y2="12" />
+  			<line id="sec-tail" x1="70" y1="70" x2="70" y2="56" />
+  			<text x="62" y="18">12</text>
+  			<text x="126" y="76">3</text>
+  			<text x="66" y="130">6</text>
+  			<text x="7" y="76">9</text>
+  		</svg>
+  		<div class="time-text">
+  			<span id="hr"></span>
+  			<span>:</span>
+  			<span id="mn"></span>
+  			<span>:</span>
+  			<span id="sc"></span>
+  			<span id="suffix">--</span>
+  			
+  		</div>
+  	</div>
+  </body>
+</html>
