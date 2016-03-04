@@ -6,13 +6,26 @@
     <meta charset="utf-8">
     <title>Clock Canvas</title>
     <link rel="stylesheet" type="text/css" href="clockstyle.css">
+    <script src="clockscript.js"></script>
   </head>
   <body>
-  <h1>My Digital Clock</h1>
-<canvas id="canvas" width="500" height="620">
-</canvas>
-<img id="myClock" />
-<button id="date" onclick="digTime()">CLick for current date</button>
-<script src="clockscript.js"></script>
+  <h1>Stop Watch</h1>
+
+<script>
+document.getElementById("startStop").addEventListener("click", startStop());
+document.getElementById("reset").addEventListener("click", reset());
+
+</script>
+
+
+<p id="output"></p>
+<div id = "controls">
+<button id="startStop" onclick="startStop()">Start/Pause</button>
+<button id="reset" onclick="reset()">Reset</button>
+
+
+
+</div>
+
   </body>
 </html>
