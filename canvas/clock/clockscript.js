@@ -1,3 +1,8 @@
+/*
+Based on Youtube Tutorials
+In general, there is Canvas being used
+*/
+
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 ctx.strokeStyle = '#28d1fa';
@@ -5,20 +10,20 @@ ctx.lineWidth = 17;
 ctx.lineCap = 'round';
 ctx.shadowBlur = 15;
 ctx.shadowColor = '#29d1fa';
-
+/*custom function to convert degrees (360) into radians (2*Pi -A. A)*/
 function degToRadian(degree) {
     var factor = Math.PI/180;
     return degree*factor;
 }
 
 function renderTime() {
-    
+    //JS Object new Date() - A.A>
     var currentDate = new Date();
 
     var currentDay = currentDate.toDateString();
 
     var currentTime = currentDate.toLocaleTimeString();
-
+//standard JS functions getHours of JS object New Date - A. A.
     var currentHour = currentDate.getHours();
     var currentMinute = currentDate.getMinutes();
     var currentSecond = currentDate.getSeconds();
