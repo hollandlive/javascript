@@ -1,86 +1,59 @@
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
-ctx.strokeStyle = '#28d1fa';
-ctx.lineWidth = 17;
-ctx.lineCap = 'round';
-ctx.shadowBlur = 15;
-ctx.shadowColor = '#29d1fa';
+/*
+Simple countdown (stopwatch)
+In JavaScript
+Example - http://arthem.info/canvas/whiteclock/
+*/
+var time = 0;
+var running = 0;
 
-function degToRadian(degree) {
-    var factor = Math.PI/180;
-    return degree*factor;
-}
-
-function renderTime() {
-    
-    var currentDate = new Date();
-
-    var currentDay = currentDate.toDateString();
-
-    var currentTime = currentDate.toLocaleTimeString();
-
-    var currentHour = currentDate.getHours();
-    var currentMinute = currentDate.getMinutes();
-    var currentSecond = currentDate.getSeconds();
-    var currentMillisecond = currentDate.getMilliseconds();
-
-    var newSecond = currentSecond+(currentMillisecond/1000);
-
-    //Background
-    //ctx.fillStyle = "#366";
-    gradient = ctx.createRadialGradient(250, 250, 5, 250, 250, 300);
-    gradient.addColorStop(0, '#357');
-    gradient.addColorStop(1, '#07303a');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 500, 620);
-
-    //Hours
-    ctx.beginPath();
-    ctx.arc(250, 250, 200, degToRadian(270), degToRadian((currentHour*15)-90));
-    ctx.stroke();
-    //Minutes
-    ctx.beginPath();
-    ctx.arc(250, 250, 160, degToRadian(270), degToRadian((currentMinute*6)-90));
-    ctx.stroke();
-
-    //Seconds
-    ctx.beginPath();
-    ctx.arc(250, 250, 120, degToRadian(270), degToRadian((newSecond*6)-90));
-    ctx.stroke();
-
-    //Date
-    ctx.font = "25px Arial";
-    ctx.fillStyle = '#28d1fa';
-    ctx.fillText(currentDay, 154, 220);
-    
-
-    //Time
-    ctx.font = "40px Arial";
-    ctx.fillText(currentTime, 168, 280);
-
-    //Logo
-    ctx.font = "10px Arial";
-    ctx.fillText('http://arthem.Info', 215, 300);
-
-    //Seconds
-    ctx.font = "57px Arial";
-    ctx.fillStyle = '#fff';
-    ctx.shadowBlur = 15;
-    ctx.fillText(currentSecond, 220, 350);
-    if (currentSecond = 20) {
-        ctx.fillStyle = 'red';
+function startStop () {
+    if(running == 0) {
+        running = 1;
+        increment();
+        document.getElementById('startStop').innerHTML = 'Pause';
+    } else {
+        running = 0;
+        document.getElementById('startStop').innerHTML = 'Resume';
     }
-
-    var dataURL =  canvas.toDataURL();
-        document.getElementById("myClock").src = dataURL;
 }
 
-function digTime() {
-    var currentDay = new Date();
+function increment() {
+    if (running == 1) {
+        setTimeout(function(){
+            time++;
+            var mins = Math.floor(time/10/60);
 
-    var currentDay = currentDay.getDate();
-    return currentDay;
+            if (mins < 10) {
+                mins = "0" + mins;
+            }
+
+
+            var secs = Math.floor(time/10);
+            if (secs < 10) {
+                secs = "0" + secs;
+            } 
+
+
+            var tenths = time%10;
+            document.getElementById('output').innerHTML = mins + ":" + secs + ":" + "0" + tenths;
+            increment();
+        }, 100);
+        
+    }
 }
 
-setInterval(renderTime, 40);
-//alert(digTime());
+/*function increment() {
+    setTimeout(startStop, 1000);
+    time = time + 1;
+    document.getElementById('secs').innerHTML = time;
+
+}*/
+
+function reset() {
+    running = 0;
+    time = 0;
+    document.getElementById('startStop').innerHTML = 'Start';
+    document.getElementById('output').innerHTML = '00:00:00';
+}
+
+
